@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Michi Neha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#1a0b2e; --bg2:#2b1248; --text:#fff3f8; --muted:#d9c3e6;
+  --rose:#ff8fc2; --peach:#ffc58a; --lav:#b69cff; --mint:#8ff0d0;
+  --n1:#ffd6e8; --n2:#ffe9b8; --n3:#d9ccff; --n4:#c9f5e6; --ink:#3a1747;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){color-scheme:light;--bg:#fff0f6;--bg2:#ffe1ef;--text:#3a1747;--muted:#6d4a7a;--rose:#e0398a;--peach:#f08a3c;--lav:#7a55e0}
+}
+:root[data-theme="dark"]{color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Outfit",system-ui,sans-serif;font-weight:300;color:var(--text);background:radial-gradient(120% 90% at 20% 0%,var(--bg2),var(--bg));background-color:var(--bg);overflow-x:hidden;line-height:1.6}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.45;z-index:0;animation:drift 18s ease-in-out infinite alternate}
+.b1{width:46vmax;height:46vmax;background:var(--rose);top:-12vmax;left:-10vmax}
+.b2{width:40vmax;height:40vmax;background:var(--lav);bottom:-14vmax;right:-8vmax;animation-delay:-6s}
+.b3{width:28vmax;height:28vmax;background:var(--peach);top:40%;left:55%;opacity:.28;animation-delay:-11s}
+@keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+main{position:relative;z-index:2}
+.hero{min-height:92svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 20px}
+.hi{font-size:clamp(1.05rem,2.6vw,1.4rem);color:var(--muted);letter-spacing:.02em;margin:0 0 6px;opacity:0;animation:pop .9s .2s forwards}
+h1{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(3.4rem,15vw,9.5rem);line-height:.95;margin:0;display:flex;flex-wrap:wrap;justify-content:center;gap:0 .28em}
+.word{display:inline-flex}
+.ch{display:inline-block;background:linear-gradient(110deg,var(--rose),var(--peach),var(--lav),var(--rose));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:translateY(.7em) rotate(8deg) scale(.6);animation:letter .9s cubic-bezier(.2,1.4,.4,1) forwards,shine 6s linear infinite;filter:drop-shadow(0 6px 24px rgba(255,143,194,.35))}
+.ch:hover{animation:wiggle .5s,shine 6s linear infinite;transform:none;opacity:1}
+@keyframes letter{to{opacity:1;transform:none}}
+@keyframes shine{to{background-position:300% 0}}
+@keyframes wiggle{30%{transform:translateY(-.18em) rotate(-8deg) scale(1.15)}70%{transform:translateY(.04em) rotate(6deg)}}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.type{min-height:2.2em;margin:28px 0 0;font-size:clamp(1.05rem,3vw,1.5rem);opacity:0;animation:pop .9s 1.6s forwards}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--rose);vertical-align:-.15em;margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cue{margin-top:42px;color:var(--muted);font-size:.95rem;opacity:0;animation:pop .9s 2.2s forwards}
+.cue span{display:block;font-size:1.4rem;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+
+.notes{max-width:980px;margin:0 auto;padding:40px 20px 20px}
+.notes h2{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(1.8rem,5vw,3rem);text-align:center;margin:0 0 40px}
+.wall{display:flex;flex-wrap:wrap;gap:26px;justify-content:center}
+.note{color:var(--ink);padding:26px 26px 30px;border-radius:6px 22px 6px 22px;box-shadow:0 18px 40px rgba(0,0,0,.28);transform:rotate(var(--r,0deg));width:min(100%,300px);transition:transform .35s cubic-bezier(.2,1.4,.4,1),box-shadow .35s;opacity:0}
+.note.in{opacity:1;animation:drop .8s cubic-bezier(.2,1.3,.4,1) backwards}
+.note:hover{transform:rotate(0) scale(1.05) translateY(-6px);box-shadow:0 28px 56px rgba(0,0,0,.4)}
+@keyframes drop{from{opacity:0;transform:translateY(-60px) rotate(calc(var(--r)*3))}}
+.note b{display:block;font-family:"Fraunces",Georgia,serif;font-size:1.5rem;font-weight:600;margin-bottom:6px}
+.note p{margin:0;font-weight:400}
+.note:nth-child(1){background:var(--n1);--r:-3deg;width:min(100%,320px)}
+.note:nth-child(2){background:var(--n2);--r:2.5deg;margin-top:34px}
+.note:nth-child(3){background:var(--n3);--r:-1.5deg;width:min(100%,340px)}
+.note:nth-child(4){background:var(--n4);--r:3deg;margin-top:20px}
+
+.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:18px 56px;padding:70px 20px 30px;text-align:center}
+.stat strong{display:block;font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:clamp(2.6rem,8vw,4.4rem);font-weight:600;color:var(--peach);line-height:1}
+.stat span{color:var(--muted)}
+
+.gift{text-align:center;padding:60px 20px 90px}
+.gift p{max-width:34ch;margin:0 auto 26px;font-size:1.2rem}
+button{font:inherit;cursor:pointer}
+.btn{position:relative;border:0;color:#2b0f3a;font-weight:500;font-size:1.15rem;padding:16px 34px;border-radius:999px;background:linear-gradient(120deg,var(--peach),var(--rose),var(--lav));background-size:200% 100%;animation:shine2 4s linear infinite,beat 2.2s ease-in-out infinite;box-shadow:0 10px 34px rgba(255,143,194,.5)}
+@keyframes shine2{to{background-position:200% 0}}
+@keyframes beat{50%{transform:scale(1.06)}}
+.btn:hover{animation-play-state:paused,paused;transform:scale(1.08)}
+button:focus-visible{outline:3px solid var(--mint);outline-offset:4px}
+footer{position:relative;z-index:2;text-align:center;color:var(--muted);padding:10px 20px 50px}
+footer em{font-family:"Fraunces",Georgia,serif;color:var(--text);font-size:1.15rem}
+
+.veil{position:fixed;inset:0;z-index:5;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(20,6,36,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.veil.on{display:flex}
+.card{max-width:440px;text-align:center;color:var(--ink);background:linear-gradient(160deg,#fff,var(--n1));padding:38px 30px 30px;border-radius:28px;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:zoom .7s cubic-bezier(.2,1.5,.4,1)}
+@keyframes zoom{from{opacity:0;transform:scale(.4) rotate(-8deg)}}
+.card h3{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:2.1rem;margin:0 0 10px}
+.card p{font-weight:400;margin:0 0 6px}
+.card .from{margin-top:14px;font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:1.3rem}
+.card button{margin-top:22px;border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:10px 24px;font-weight:500}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .ch,.hi,.type,.cue,.note{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<main>
+  <section class="hero">
+    <p class="hi">Hey, this page is just for you</p>
+    <h1 id="name" aria-label="Michi Neha"></h1>
+    <p class="type"><span id="tw"></span><span class="caret"></span></p>
+    <div class="cue">Scroll down<span>&#8595;</span></div>
+  </section>
+
+  <section class="notes">
+    <h2>Little things I noticed about you</h2>
+    <div class="wall" id="wall">
+      <div class="note"><b>Your smile 🌸</b><p>It lights up the room faster than any lamp ever could.</p></div>
+      <div class="note"><b>Your words 💬</b><p>Kind, funny, and somehow always exactly right.</p></div>
+      <div class="note"><b>Your vibe 🦋</b><p>Calm, warm, and impossible to forget.</p></div>
+      <div class="note"><b>Your heart ✨</b><p>Pure gold. Everyone around you can feel it.</p></div>
+    </div>
+  </section>
+
+  <section class="stats" id="stats">
+    <div class="stat"><strong data-to="100" data-suf="%">0</strong><span>awesome, tested daily</span></div>
+    <div class="stat"><strong data-to="24" data-suf="/7">0</strong><span>good vibes on tap</span></div>
+    <div class="stat"><strong data-to="999" data-suf="+">0</strong><span>smiles you’ve caused</span></div>
+  </section>
+
+  <section class="gift">
+    <p>One more thing. I kept it behind this button.</p>
+    <button class="btn" id="open">Open your surprise</button>
+  </section>
+</main>
+
+<footer>Made with 💖 by <em>Nitish Roy</em></footer>
+
+<div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="vt">
+  <div class="card">
+    <h3 id="vt">Michi Neha 🎉</h3>
+    <p>Thank you for being such a wonderful friend.</p>
+    <p>Keep smiling, keep shining, and never change.</p>
+    <div class="from">Always yours, Nitish Roy</div>
+    <button id="close">Close</button>
+  </div>
+</div>
+
+<script>
+/* name, letter by letter */
+(function(){
+  var h=document.getElementById("name"),i=0;
+  "Michi Neha".split(" ").forEach(function(w){
+    var s=document.createElement("span");s.className="word";s.setAttribute("aria-hidden","true");
+    w.split("").forEach(function(c){
+      var l=document.createElement("span");l.className="ch";l.textContent=c;
+      l.style.animationDelay=(0.35+i*0.11)+"s,0s";i++;s.appendChild(l);
+    });
+    h.appendChild(s);
+  });
+})();
+
+/* typewriter */
+(function(){
+  var lines=["You make ordinary days feel special ✨","Your smile is basically a superpower 🌸","Some people are pure sunshine ☀️","This page exists because you’re awesome 💖"];
+  var el=document.getElementById("tw"),li=0,ci=0,del=false;
+  function tick(){
+    var a=Array.from(lines[li]);
+    el.textContent=a.slice(0,ci).join("");
+    if(!del&&ci<a.length){ci++;setTimeout(tick,55)}
+    else if(!del){del=true;setTimeout(tick,1500)}
+    else if(ci>0){ci--;setTimeout(tick,22)}
+    else{del=false;li=(li+1)%lines.length;setTimeout(tick,300)}
+  }
+  setTimeout(tick,1800);
+})();
+
+/* particles, cursor sparkles, confetti */
+var cv=document.getElementById("fx"),cx=cv.getContext("2d"),W=0,H=0;
+function size(){var d=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0)}
+size();addEventListener("resize",size);
+var G=["💖","✨","🌸","⭐","💫","🦋"];
+function mk(respawn){return{x:Math.random()*W,y:respawn?H+20:Math.random()*H,s:12+Math.random()*18,v:.25+Math.random()*.6,d:Math.random()*6.28,g:G[Math.random()*G.length|0],a:.25+Math.random()*.5}}
+var fl=[];for(var k=0;k<(W<600?18:34);k++)fl.push(mk(false));
+var bits=[];
+function spark(x,y){bits.push({x:x,y:y,vx:(Math.random()-.5)*1.5,vy:(Math.random()-.5)*1.5-.5,l:1,c:"hsl("+(300+Math.random()*60)+" 100% 75%)",r:2+Math.random()*3,g:0})}
+function burst(x,y,n){for(var i=0;i<n;i++){var a=Math.random()*6.28,s=3+Math.random()*9;bits.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-4,l:1.6,c:"hsl("+Math.random()*360+" 95% 65%)",r:3+Math.random()*4,g:.18,sq:1})}}
+function loop(t){
+  cx.clearRect(0,0,W,H);
+  for(var i=0;i<fl.length;i++){var f=fl[i];f.y-=f.v;f.x+=Math.sin(t/1500+f.d)*.4;if(f.y<-30)fl[i]=mk(true);
+    cx.globalAlpha=f.a;cx.font=f.s+"px serif";cx.fillText(f.g,f.x,f.y)}
+  for(var j=bits.length-1;j>=0;j--){var b=bits[j];b.x+=b.vx;b.y+=b.vy;b.vy+=b.g;b.l-=b.g?0.012:0.03;
+    if(b.l<=0){bits.splice(j,1);continue}
+    cx.globalAlpha=Math.min(b.l,1);cx.fillStyle=b.c;
+    if(b.sq)cx.fillRect(b.x,b.y,b.r*1.6,b.r);else{cx.beginPath();cx.arc(b.x,b.y,b.r,0,6.28);cx.fill()}}
+  cx.globalAlpha=1;requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+addEventListener("pointermove",function(e){spark(e.clientX,e.clientY);spark(e.clientX,e.clientY)});
+addEventListener("pointerdown",function(e){burst(e.clientX,e.clientY,26)});
+
+/* notes drop in, stats count up */
+var io=new IntersectionObserver(function(en){en.forEach(function(e){
+  if(!e.isIntersecting)return;
+  if(e.target.classList.contains("note")){
+    var idx=Array.prototype.indexOf.call(e.target.parentNode.children,e.target);
+    e.target.style.animationDelay=(idx*.15)+"s";e.target.classList.add("in");
+  }else{
+    e.target.querySelectorAll("strong").forEach(function(s){
+      var to=+s.dataset.to,suf=s.dataset.suf,st=null;
+      (function step(ts){st=st||ts;var p=Math.min((ts-st)/1600,1),v=Math.round(to*(1-Math.pow(1-p,3)));
+        s.textContent=v+suf;if(p<1)requestAnimationFrame(step)})(performance.now());
+    });
+  }
+  io.unobserve(e.target);
+})},{threshold:.35});
+document.querySelectorAll(".note,#stats").forEach(function(n){io.observe(n)});
+
+/* surprise */
+var veil=document.getElementById("veil"),closeBtn=document.getElementById("close");
+document.getElementById("open").addEventListener("click",function(e){
+  e.stopPropagation();veil.classList.add("on");closeBtn.focus();
+  var r=e.target.getBoundingClientRect();
+  burst(r.left+r.width/2,r.top+r.height/2,160);
+  setTimeout(function(){burst(W*.25,H*.4,90);burst(W*.75,H*.4,90)},350);
+});
+function shut(){veil.classList.remove("on")}
+closeBtn.addEventListener("click",function(e){e.stopPropagation();shut()});
+veil.addEventListener("click",function(e){if(e.target===veil)shut()});
+addEventListener("keydown",function(e){if(e.key==="Escape")shut()});
+
+
+
+
+
+</script>
+
+
+<audio id="bgm" src="abc.mp3" loop preload="auto"></audio>
+
+<script>
+(function () {
+  const audio = document.getElementById('bgm');
+  const GESTURES = ['click', 'touchstart', 'keydown', 'pointerdown', 'scroll'];
+
+  // One-time "any interaction = play" fallback
+  function armGestureFallback() {
+    const fire = () => {
+      audio.muted = false;
+      audio.volume = 1;
+      audio.play().catch(() => {});
+    };
+    GESTURES.forEach(e =>
+      document.addEventListener(e, fire, { once: true, passive: true })
+    );
+  }
+
+  // Strategy 1: muted autoplay (browsers allow this)
+  audio.muted = true;
+  audio.play().then(() => {
+    // Unmute on first gesture
+    const unmute = () => { audio.muted = false; audio.volume = 1; };
+    GESTURES.forEach(e =>
+      document.addEventListener(e, unmute, { once: true, passive: true })
+    );
+  })
+  // Strategy 2: unmuted autoplay
+  .catch(() => {
+    audio.muted = false;
+    return audio.play();
+  })
+  // Strategy 3: guaranteed via any gesture
+  .catch(armGestureFallback);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
